@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { GoDotFill } from "react-icons/go";
 import {
   FaFacebookF,
@@ -11,6 +11,9 @@ import {
 import AboutPage from "./about/page";
 import ServicePage from "./services/page";
 import CallToAction from "@/components/call-to-action";
+import MyProjects from "@/components/my-projects";
+import NavbarComponent from "@/components/ui/navbar.component";
+import ScrollToSection from "@/components/ui/scrollpage.component";
 
 type IRedirectJSX = {
   link: string;
@@ -19,6 +22,8 @@ type IRedirectJSX = {
 };
 
 export default function Home() {
+  const aboutPageRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     loadTexts(["Developer", "Designer", "Vipin Meghwal"], "text", [
       "tomato",
@@ -78,22 +83,22 @@ export default function Home() {
 
   let socialIcons = [
     {
-      link: "",
+      link: "https://www.facebook.com/vipinnation/",
       className: "hover:text-indigo-600",
       icon: <FaFacebookF />,
     },
     {
-      link: "",
+      link: "https://twitter.com/vipinnation",
       className: "hover:text-blue-400",
       icon: <FaTwitter />,
     },
     {
-      link: "",
+      link: "https://www.linkedin.com/in/vipinnation",
       className: "hover:text-blue-800",
       icon: <FaLinkedin />,
     },
     {
-      link: "",
+      link: "https://www.instagram.com/the_coldhand/",
       className: " hover:text-red-400 ",
       icon: <FaInstagram />,
     },
@@ -117,8 +122,54 @@ export default function Home() {
       </>
     );
   };
+
+  const scrollToContent = (to: number) => {
+    scrollTo({
+      top: to,
+      left: 100,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div>
+      <div>
+        <nav>
+          <div className="container mx-auto flex justify-around items-center">
+            <span className="text-2xl font-bold nav-logo">Vipin Meghwal</span>
+
+            <div className="md:flex items-center space-x-4 py-3">
+              <span className="hover:text-primary py-1 navlink font-semibold cursor-pointer">
+                Home
+              </span>
+              <span
+                className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
+                onClick={() => scrollToContent(750)}
+              >
+                About
+              </span>
+              <span
+                className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
+                onClick={() => scrollToContent(1650)}
+              >
+                Projects
+              </span>
+              <span
+                className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
+                onClick={() => scrollToContent(1050)}
+              >
+                Skills
+              </span>
+              <span
+                className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
+                onClick={() => scrollToContent(2450)}
+              >
+                Contact
+              </span>
+            </div>
+          </div>
+        </nav>
+      </div>
       <div className="flex items-center justify-center text-center h-[100vh] text-white">
         <div>
           <h3 className="text-2xl font-semibold">Welcome !</h3>
@@ -154,7 +205,11 @@ export default function Home() {
         </div>
       </div>
 
-      <AboutPage />
+      <div ref={aboutPageRef}>
+        <AboutPage />
+      </div>
+
+      <MyProjects />
 
       <CallToAction />
     </div>

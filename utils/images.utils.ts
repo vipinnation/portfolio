@@ -7,6 +7,8 @@ import angular from "../assets/images/angular.png";
 import rust from "../assets/images/rust.jpg";
 import nextjs from "../assets/images/nextjs.png";
 import docker from "../assets/images/docker.png";
+import engima from "../assets/images/engima.png";
+import edureon from "../assets/images/edureon.png";
 
 export const skills_images = {
   javascript: javascript,
@@ -18,4 +20,9 @@ export const skills_images = {
   nextjs,
   angular,
   docker,
+};
+
+export const project_images = {
+  engima,
+  edureon,
 };

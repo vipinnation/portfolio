@@ -1,8 +1,15 @@
+"use client";
 import React from "react";
+import ScrollToSection from "./scrollpage.component";
 
 type Props = {};
 
 const NavbarComponent = (props: Props) => {
+  const scrollPage = () => {
+    try {
+      window.scrollBy(0, window.innerHeight);
+    } catch (error) {}
+  };
   return (
     <div>
       <nav>
@@ -10,13 +17,14 @@ const NavbarComponent = (props: Props) => {
           <span className="text-2xl font-bold nav-logo">Vipin Meghwal</span>
 
           <div className="md:flex items-center space-x-4 py-3">
-            <a
-              href="#"
-              className="hover:text-primary py-1 navlink"
-            >
+            <a href="#" className="hover:text-primary py-1 navlink">
               Home
             </a>
-            <a href="#about" className="hover:text-primary py-1 navlink">
+            <a
+              href="#about"
+              className="hover:text-primary py-1 navlink"
+              onClick={(e) => {}}
+            >
               About
             </a>
             <a href="#projects" className="hover:text-primary py-1 navlink">

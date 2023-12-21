@@ -18,10 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
-        <NavbarComponent />
-        {children}
-      </body>
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }
