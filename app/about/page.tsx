@@ -21,7 +21,7 @@ const AboutPage = (props: Props) => {
       <div className="w-9/12 mx-auto">
         <h2 className="text-6xl uppercase font-semibold">About Me</h2>
         <span className="uppercase">
-          Web Designer and{" "}
+          Web Designer and
           <strong className="text-yellow-400"> Web developer</strong>
         </span>
 
@@ -31,18 +31,18 @@ const AboutPage = (props: Props) => {
             set encompassing web, mobile, and desktop applications. Proficient
             in JavaScript, Python, and Java, Vipin excels in crafting innovative
             and high-quality solutions for diverse technological challenges.
-          </p>{" "}
+          </p>
           <p className="py-7">
             Committed to staying current with industry trends, Vipin brings a
             collaborative spirit to cross-functional teams. Their effective
             communication and problem-solving abilities make them an asset to
             any project.
-          </p>{" "}
+          </p>
           <p>
             Passionate about creating seamless, scalable, and cutting-edge
-            applications, Vipin's track record goes beyond technical expertise.
-            They demonstrate a dedication to turning concepts into reality in
-            our rapidly evolving digital landscape.
+            applications, Vipin&apos;s track record goes beyond technical
+            expertise. They demonstrate a dedication to turning concepts into
+            reality in our rapidly evolving digital landscape.
           </p>
         </div>
       </div>
@@ -70,8 +70,9 @@ const AboutPage = (props: Props) => {
           </header>
 
           <div className="py-4 grid grid-cols-2 gap-x-6">
-            {skills.map((item) => (
+            {skills.map((item, i) => (
               <SkillCardComponent
+                key={i}
                 name={item.name}
                 rating={item.rating}
                 icon={item.icon}

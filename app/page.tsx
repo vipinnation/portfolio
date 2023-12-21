@@ -142,8 +142,9 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center items-top">
-            {socialIcons.map((item) => (
+            {socialIcons.map((item, i) => (
               <RedirectJSX
+                key={i}
                 link={item.link}
                 icon={item.icon}
                 className={item.className}

@@ -8,7 +8,7 @@ const CallToAction = (props: Props) => {
       <div className="text-white text-center">
         <h4 className="text-6xl">Contact Us</h4>
         <span className="text-sm">
-          Connecting Dreams, Answering Inquiries – Reach Out, We're Here for
+          Connecting Dreams, Answering Inquiries – Reach Out, We &apos; re Here for
           You!
         </span>
       </div>
