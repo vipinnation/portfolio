@@ -1,0 +1,463 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text&family=Libre+Baskerville&display=swap");
+
+:root {
+  --primary-color: #191919;
+  --white: #ffffff;
+}
+
+* {
+  font-family: "Crimson Text", serif;
+}
+
+body {
+  background: var(--primary-color);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Enhanced Navigation Styling */
+nav {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+nav a {
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 0.5rem; /* Add padding to the links */
+  transition: color 500ms ease-in-out;
+}
+nav a:hover {
+  color: var(--primary-color);
+}
+
+.nav-logo {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navlink {
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  position: relative;
+}
+
+.navlink:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--primary-color);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.navlink:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.header-text-container {
+  font-size: 4em;
+  text-align: center;
+  width: 600px;
+  display: block;
+  color: white;
+}
+.underscore-sign {
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  left: 10px;
+}
+
+.about {
+  background-color: #1b1b1b;
+  height: 100vh;
+  display: flex;
+}
+.about .title {
+  max-width: 60%;
+  width: 100%;
+  align-self: center;
+  transform: translateY(-50px);
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.about .title span {
+  display: inline-block;
+  font-size: 5vw;
+  color: #efefef;
+  width: 100%;
+  text-transform: uppercase;
+  transform: translateX(-100%);
+  animation: byBottom 1s ease both;
+  font-weight: 600;
+  letter-spacing: 0.25vw;
+}
+.about .title span:last-child {
+  font-size: 1rem;
+  animation: byBottom 1s 0.25s ease both;
+}
+.about .title span a {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  color: #f7ca18;
+}
+.about .title span a::after {
+  content: "";
+  height: 2px;
+  background-color: #f7ca18;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  animation: linkAfter 0.5s 1s ease both;
+}
+
+.about h1 {
+  color: light gray;
+}
+@-moz-keyframes pop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes pop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-o-keyframes pop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes pop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes byBottom {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes byBottom {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-o-keyframes byBottom {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes byBottom {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes linkAfter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+@-webkit-keyframes linkAfter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+@-o-keyframes linkAfter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+@keyframes linkAfter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+
+/* Service Page */
+.service-box {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+.service-icon {
+  width: 100%;
+  height: 220px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.service-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  width: 100%;
+  height: 220px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s ease;
+  background-color: #474747;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform: translateY(110px) rotateX(-90deg);
+  -moz-transform: translateY(110px) rotateX(-90deg);
+  -ms-transform: translateY(110px) rotateX(-90deg);
+  -o-transform: translateY(110px) rotateX(-90deg);
+  transform: translateY(110px) rotateX(-90deg);
+}
+.service-box .service-icon .front-content {
+  position: relative;
+  top: 80px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.service-box .service-icon .front-content i {
+  font-size: 28px;
+  color: #fff;
+  font-weight: normal;
+}
+
+.service-box .service-icon .front-content h3 {
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.service-box .service-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.service-box .service-content p {
+  font-size: 13px;
+  color: #b1b1b1;
+  margin: 0;
+}
+.yellow {
+  background-color: #ffc000;
+}
+.orange {
+  background-color: #fc7f0c;
+}
+.red {
+  background-color: #e84b3a;
+}
+.grey {
+  background-color: #474747;
+}
+.service-box:hover .service-icon {
+  opacity: 0;
+  -webkit-transform: translateY(-110px) rotateX(90deg);
+  -moz-transform: translateY(-110px) rotateX(90deg);
+  -ms-transform: translateY(-110px) rotateX(90deg);
+  -o-transform: translateY(-110px) rotateX(90deg);
+  transform: translateY(-110px) rotateX(90deg);
+}
+.service-box:hover .service-content {
+  opacity: 1;
+  -webkit-transform: rotateX(0);
+  -moz-transform: rotateX(0);
+  -ms-transform: rotateX(0);
+  -o-transform: rotateX(0);
+  transform: rotateX(0);
+}
+
+.skill-box {
+  width: 100%;
+  padding: 15px;
+}
+.skill-box > h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+.number {
+  /*width: 150px;*/
+  height: 150px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+  margin: 10px;
+}
+.value {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  left: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  color: #06e;
+}
+.skill-box > .skills-circle > ul {
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+.skill-box > .skills-circle > ul > li {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  margin: 10px;
+}
+.skill-box > .skills-circle > ul > .web-design:after {
+  content: "Circular skill 1";
+  top: 160px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  font-weight: 600;
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+.skill-box > .skills-circle > ul > .cms-mec:after {
+  content: "Circular Skill 2";
+  top: 160px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  font-weight: 600;
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+.skill-box > .skills-circle > ul > .payment-integration:after {
+  content: "Circular Skill 3";
+  top: 160px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  font-weight: 600;
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+
+.-z-1 {
+  z-index: -1;
+}
+
+.origin-0 {
+  transform-origin: 0%;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label,
+textarea:focus ~ label,
+textarea:not(:placeholder-shown) ~ label,
+select:focus ~ label,
+select:not([value=""]):valid ~ label {
+  /* @apply transform; scale-75; -translate-y-6; */
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-scale-x: 0.75;
+  --tw-scale-y: 0.75;
+  --tw-translate-y: -1.5rem;
+  color: whitesmoke;
+}
+
+input:focus ~ label,
+select:focus ~ label {
+  /* @apply text-black; left-0; */
+  --tw-text-opacity: 1;
+  color: white;
+  left: 0px;
+}
