@@ -53,7 +53,10 @@ const AboutPage = (props: Props) => {
         <h3 className="font-medium text-2xl mt-16 text-gray-200">Top skills</h3>
         <div className="py-4 flex flex-wrap">
           {skills.map((item, i) => (
-            <div className="mx-4 w-48 h-28 mobile:w-32">
+            <div
+              className="mx-4 w-48 h-28 mobile:w-32"
+              key={Math.floor(Math.random() * 1e4)}
+            >
               <SkillCardComponent
                 key={i}
                 name={item.name}
