@@ -18,14 +18,16 @@ const AboutPage = (props: Props) => {
   ];
   return (
     <div className="bg-black min-h-[100vh] text-white p-4">
-      <div className="w-9/12 mx-auto">
-        <h2 className="text-6xl uppercase font-semibold">About Me</h2>
-        <span className="uppercase">
+      <div className=" sm:w-9/12 mx-auto">
+        <h2 className=" text-5xl sm:text-6xl uppercase font-semibold">
+          About Me
+        </h2>
+        <span className="uppercase mobile:text-xs">
           Web Designer and
           <strong className="text-yellow-400"> Web developer</strong>
         </span>
 
-        <div className="mt-8 text-lg">
+        <div className="mt-8 text-md sm:text-lg">
           <p>
             Vipin Meghwal is a versatile software developer with a strong skill
             set encompassing web, mobile, and desktop applications. Proficient
@@ -47,7 +49,23 @@ const AboutPage = (props: Props) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center mt-4 w-9/12 mx-auto">
+      <div className="sm:w-9/12 mx-auto ">
+        <h3 className="font-medium text-2xl mt-16 text-gray-200">Top skills</h3>
+        <div className="py-4 flex flex-wrap">
+          {skills.map((item, i) => (
+            <div className="mx-4 w-48 h-28 mobile:w-32">
+              <SkillCardComponent
+                key={i}
+                name={item.name}
+                rating={item.rating}
+                icon={item.icon}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* <div className="flex items-center justify-center mt-4 sm:w-9/12 mx-auto">
         <div className="w-full p-6 rounded-lg shadow-lg shadow-gray-300 bg-white">
           <header className="flex items-center">
             <svg
@@ -69,7 +87,7 @@ const AboutPage = (props: Props) => {
             <h3 className="font-medium text-lg text-black">Top skills</h3>
           </header>
 
-          <div className="py-4 grid grid-cols-2 gap-x-6">
+          <div className="py-4 grid sm:grid-cols-2 gap-x-6">
             {skills.map((item, i) => (
               <SkillCardComponent
                 key={i}
@@ -80,7 +98,7 @@ const AboutPage = (props: Props) => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

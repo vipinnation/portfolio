@@ -10,7 +10,10 @@ type Props = {
 const SkillCardComponent: React.FC<Props> = ({ name, rating, icon }) => {
   return (
     <div>
-      <div className="flex items-center py-3">
+      <span className="bg-tranparent mx-4">
+        <Image src={icon} alt={name as string} />
+      </span>
+      {/* <div className="flex items-center py-3">
         <span className="w-8 h-8 shrink-0 mr-4 rounded-full bg-blue-50 text-yellow-600 flex items-center justify-center">
           <Image src={icon} alt={name as string} />
         </span>
@@ -31,7 +34,7 @@ const SkillCardComponent: React.FC<Props> = ({ name, rating, icon }) => {
             ></span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,20 +1,19 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedin,
   FaInstagram,
   FaGithub,
+  FaArrowDown,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 import AboutPage from "./about/page";
-import ServicePage from "./services/page";
 import CallToAction from "@/components/call-to-action";
 import MyProjects from "@/components/my-projects";
-import NavbarComponent from "@/components/ui/navbar.component";
-import ScrollToSection from "@/components/ui/scrollpage.component";
-
+import { IoCloseSharp } from "react-icons/io5";
 type IRedirectJSX = {
   link: string;
   className: string;
@@ -22,6 +21,7 @@ type IRedirectJSX = {
 };
 
 export default function Home() {
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const aboutPageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function Home() {
     {
       link: "https://twitter.com/vipinnation",
       className: "hover:text-blue-400",
-      icon: <FaTwitter />,
+      icon: <FaXTwitter />,
     },
     {
       link: "https://www.linkedin.com/in/vipinnation",
@@ -134,11 +134,38 @@ export default function Home() {
   return (
     <div>
       <div>
-        <nav>
-          <div className="container mx-auto flex justify-around items-center">
-            <span className="text-2xl font-bold nav-logo">Vipin Meghwal</span>
+        <nav className={`${isNavOpen == true ? "fixed" : ""}`}>
+          <div className="container mx-auto flex justify-around items-center ">
+            <span className="text-2xl font-bold nav-logo py-4 md:py-0">
+              Vipin Meghwal
+            </span>
 
-            <div className="md:flex items-center space-x-4 py-3">
+            <button
+              id="toggle-menu-button"
+              className="z-50 md:hidden relative"
+              onClick={(e) => {
+                setIsNavOpen((_prev) => true);
+              }}
+            >
+              <span className="sr-only">Toggle Menu</span>
+              <div
+                id="open"
+                className="h-7 flex flex-col items-end justify-between"
+              >
+                <span className="block h-0.5 w-8 bg-red-900 rounded-full"></span>
+                <span className="block h-0.5 w-6 bg-red-900 rounded-full"></span>
+                <span className="block h-0.5 w-8 bg-red-900 rounded-full"></span>
+              </div>
+              <div
+                id="close"
+                className="hidden h-7 flex flex-col items-end justify-between"
+              >
+                <span className="block h-0.5 w-8  rounded-full origin-left transform rotate-45 translate-y-0.5"></span>
+                <span className="block h-0.5 w-8  rounded-full origin-left transform -rotate-45 -translate-y-0.5"></span>
+              </div>
+            </button>
+
+            <div className="mobile:hidden md:flex items-center space-x-4 py-3">
               <span className="hover:text-primary py-1 navlink font-semibold cursor-pointer">
                 Home
               </span>
@@ -169,11 +196,41 @@ export default function Home() {
             </div>
           </div>
         </nav>
+
+        {isNavOpen == true ? (
+          <div className="nav-screen text-white">
+            <span className="text-white text-5xl">
+              <IoCloseSharp
+                onClick={() => {
+                  setIsNavOpen((_prev) => false);
+                }}
+              />
+            </span>
+            <div className="nav-container">
+              <div className="nav-links">
+                <div id="myMenu">
+                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                    about
+                  </p>
+                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                    Projects
+                  </p>
+                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                    Skills
+                  </p>
+                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                    Contact
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
       <div className="flex items-center justify-center text-center h-[100vh] text-white">
         <div>
           <h3 className="text-2xl font-semibold">Welcome !</h3>
-          <div className="header-text-container">
+          <div className="mobile:text-md header-text-container">
             <span>I am </span>
             <span id="text"></span>
             <span className="underscore-sign" id="console">
@@ -201,6 +258,11 @@ export default function Home() {
                 className={item.className}
               />
             ))}
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="bouncing-arrow border-4 rounded-full p-4 mt-32 opacity-50 ">
+              <FaArrowDown className="relative bottom-2 right-2 " />
+            </div>
           </div>
         </div>
       </div>

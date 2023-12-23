@@ -16,6 +16,9 @@ const config: Config = {
       colors: {
         primary: "#191919",
       },
+      screens: {
+        mobile: { max: "480px" },
+      },
     },
   },
   plugins: [],

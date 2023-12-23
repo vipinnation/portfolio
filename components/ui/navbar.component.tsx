@@ -14,9 +14,9 @@ const NavbarComponent = (props: Props) => {
     <div>
       <nav>
         <div className="container mx-auto flex justify-around items-center">
-          <span className="text-2xl font-bold nav-logo">Vipin Meghwal</span>
+          <span className="text-2xl font-bold nav-logo text-lg">Vipin Meghwal</span>
 
-          <div className="md:flex items-center space-x-4 py-3">
+          <div className="md:flex items-center space-x-4 py-3 hidden">
             <a href="#" className="hover:text-primary py-1 navlink">
               Home
             </a>

@@ -24,11 +24,13 @@ const MyProjects = () => {
   return (
     <div className="mt-16">
       <div className=" min-h-[100vh] text-white p-4">
-        <div className="w-9/12 mx-auto">
-          <h2 className="text-6xl uppercase font-semibold">My Project</h2>
+        <div className="sm:w-9/12 mx-auto">
+          <h2 className="text-4xl sm:text-6xl uppercase font-semibold">
+            My Project
+          </h2>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 w-9/12 mx-auto">
+        <div className="mt-16 grid sm:grid-cols-2 sm:w-9/12 mx-auto">
           {myProjects.map((item, i) => (
             <ProjectCardComponent
               key={i}

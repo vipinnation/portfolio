@@ -17,8 +17,8 @@ const ProjectCardComponent: React.FC<Props> = ({
   link,
 }) => {
   return (
-    <div key={key}>
-      <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+    <div key={key} className="py-8 sm:py-0">
+      <div className="relative flex sm:w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
           <Image src={image} alt={name} />
         </div>
