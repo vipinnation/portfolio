@@ -17,7 +17,7 @@ const AboutPage = (props: Props) => {
     { name: "Docker", rating: 9.7, icon: skills_images.docker },
   ];
   return (
-    <div className="bg-black min-h-[100vh] text-white p-4">
+    <div className="bg-black min-h-[100vh] text-white p-4 ">
       <div className=" sm:w-9/12 mx-auto">
         <h2 className=" text-5xl sm:text-6xl uppercase font-semibold">
           About Me
@@ -27,7 +27,7 @@ const AboutPage = (props: Props) => {
           <strong className="text-yellow-400"> Web developer</strong>
         </span>
 
-        <div className="mt-8 text-md sm:text-lg">
+        <div className="mt-8 text-md sm:text-lg !leading-loose">
           <p>
             Vipin Meghwal is a versatile software developer with a strong skill
             set encompassing web, mobile, and desktop applications. Proficient

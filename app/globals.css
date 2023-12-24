@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Crimson+Text&family=Libre+Baskerville&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jura&display=swap");
 
 :root {
   --primary-color: #191919;
@@ -9,7 +9,7 @@
 }
 
 * {
-  font-family: "Crimson Text", serif;
+  font-family: "Jura", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -730,4 +730,10 @@ select:focus ~ label {
 .header-links a:focus::after {
   opacity: 1;
   width: 100%;
+}
+
+.project-background {
+  background: url("../assets/images/project_background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }

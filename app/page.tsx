@@ -22,7 +22,10 @@ type IRedirectJSX = {
 
 export default function Home() {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
-  const aboutPageRef = useRef<HTMLDivElement>(null);
+  const aboutPageRef = useRef<HTMLDivElement | any>(null);
+  const homePageRef = useRef<HTMLDivElement | any>(null);
+  const myProjectPageRef = useRef<HTMLDivElement | any>(null);
+  const callToActionPageRef = useRef<HTMLDivElement | any>(null);
 
   useEffect(() => {
     loadTexts(["Developer", "Designer", "Vipin Meghwal"], "text", [
@@ -123,14 +126,6 @@ export default function Home() {
     );
   };
 
-  const scrollToContent = (to: number) => {
-    scrollTo({
-      top: to,
-      left: 100,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <div>
       <div>
@@ -166,30 +161,33 @@ export default function Home() {
             </button>
 
             <div className="mobile:hidden md:flex items-center space-x-4 py-3">
-              <span className="hover:text-primary py-1 navlink font-semibold cursor-pointer">
+              <span
+                className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
+                onClick={() => homePageRef.current.scrollIntoView()}
+              >
                 Home
               </span>
               <span
                 className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
-                onClick={() => scrollToContent(750)}
+                onClick={() => aboutPageRef.current.scrollIntoView()}
               >
                 About
               </span>
               <span
                 className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
-                onClick={() => scrollToContent(1650)}
+                onClick={() => myProjectPageRef.current.scrollIntoView()}
               >
                 Projects
               </span>
               <span
                 className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
-                onClick={() => scrollToContent(1050)}
+                onClick={() => aboutPageRef.current.scrollIntoView()}
               >
                 Skills
               </span>
               <span
                 className="hover:text-primary py-1 navlink font-semibold cursor-pointer"
-                onClick={() => scrollToContent(2450)}
+                onClick={() => callToActionPageRef.current.scrollIntoView()}
               >
                 Contact
               </span>
@@ -209,16 +207,49 @@ export default function Home() {
             <div className="nav-container">
               <div className="nav-links">
                 <div id="myMenu">
-                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                  <p
+                    className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer"
+                    onClick={() => {
+                      setIsNavOpen((_prev) => false);
+                      homePageRef.current.scrollIntoView();
+                    }}
+                  >
+                    home
+                  </p>
+                  <p
+                    className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer"
+                    onClick={() => {
+                      setIsNavOpen((_prev) => false);
+                      aboutPageRef.current.scrollIntoView();
+                    }}
+                  >
                     about
                   </p>
-                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                  <p
+                    className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer"
+                    onClick={() => {
+                      setIsNavOpen((_prev) => false);
+                      myProjectPageRef.current.scrollIntoView();
+                    }}
+                  >
                     Projects
                   </p>
-                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                  <p
+                    className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer"
+                    onClick={() => {
+                      setIsNavOpen((_prev) => false);
+                      aboutPageRef.current.scrollIntoView();
+                    }}
+                  >
                     Skills
                   </p>
-                  <p className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer">
+                  <p
+                    className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer"
+                    onClick={() => {
+                      setIsNavOpen((_prev) => false);
+                      callToActionPageRef.current.scrollIntoView();
+                    }}
+                  >
                     Contact
                   </p>
                 </div>
@@ -227,7 +258,11 @@ export default function Home() {
           </div>
         ) : null}
       </div>
-      <div className="flex items-center justify-center text-center h-[100vh] text-white">
+
+      <div
+        className="flex items-center justify-center text-center h-[100vh] text-white"
+        ref={homePageRef}
+      >
         <div>
           <h3 className="text-2xl font-semibold">Welcome !</h3>
           <div className="mobile:text-md header-text-container">
@@ -271,9 +306,13 @@ export default function Home() {
         <AboutPage />
       </div>
 
-      <MyProjects />
+      <div ref={myProjectPageRef}>
+        <MyProjects />
+      </div>
 
-      <CallToAction />
+      <div ref={callToActionPageRef}>
+        <CallToAction />
+      </div>
     </div>
   );
 }
