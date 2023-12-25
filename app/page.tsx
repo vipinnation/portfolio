@@ -238,7 +238,10 @@ export default function Home() {
                     className="text-4xl font-semibold my-4 hover:text-red-400 delay-100 uppercase cursor-pointer"
                     onClick={() => {
                       setIsNavOpen((_prev) => false);
-                      aboutPageRef.current.scrollIntoView();
+                      aboutPageRef.current.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
                     }}
                   >
                     Skills

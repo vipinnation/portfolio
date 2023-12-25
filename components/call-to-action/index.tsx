@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import {
   FaPhoneAlt,
@@ -10,10 +10,64 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 type Props = {};
 
 const CallToAction = (props: Props) => {
+  const [isDisplay, setIsDisplay] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("Write your message here");
+  const [response, setResponse] = useState({
+    isError: false,
+    message: "",
+  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    setValue,
+  } = useForm();
+
+  const submitHandler = async (data: any) => {
+    try {
+      let res = await axios.post("http://localhost:5000/request", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setResponse({
+        isError: false,
+        message:
+          "Your request has been sent successfully. Our representative will contact you shortly",
+      });
+      setIsDisplay((_prev) => true);
+      removeResponseMessage();
+      reset();
+      setMessage((_prev) => "Write your message here");
+    } catch (error) {
+      console.log(error);
+      setIsDisplay((_prev) => true);
+      setResponse({
+        isError: true,
+        message: "Something went wrong, Please try again",
+      });
+      removeResponseMessage();
+      reset();
+      setMessage((_prev) => "Write your message here");
+    }
+  };
+
+  const removeResponseMessage = () => {
+    try {
+      let timout = setTimeout(() => {
+        setIsDisplay((_prev) => false);
+        clearTimeout(timout);
+      }, 3000);
+    } catch (error) {}
+  };
+
   return (
     <div className="h-[100vh] py-8">
       <div className="text-white text-center">
@@ -27,14 +81,22 @@ const CallToAction = (props: Props) => {
       <div className="flex flex-row mobile:flex-col">
         <div className="sm:w-9/12 mx-auto text-white">
           <div className="mx-auto  px-6 py-12 border-0 shadow-lg sm:rounded-3xl w-full">
-            <form id="form" noValidate>
+            <form id="form" noValidate onSubmit={handleSubmit(submitHandler)}>
+              {isDisplay == true ? (
+                <div
+                  className={`w-full text-white px-3 rounded-md text-lg  mb-4 ${
+                    response.isError == true ? "bg-yellow-500 " : "bg-green-400"
+                  }`}
+                >
+                  <span>{response.message}</span>
+                </div>
+              ) : null}
               <div className="flex">
                 <div className="relative z-0 w-full mb-5">
                   <input
                     type="text"
-                    name="name"
                     placeholder=" "
-                    required
+                    {...register("name", { required: "Name is required" })}
                     className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
                   />
                   <label
@@ -43,71 +105,87 @@ const CallToAction = (props: Props) => {
                   >
                     Enter name
                   </label>
-                  <span className="text-sm text-red-600 hidden" id="error">
-                    Name is required
-                  </span>
+                  {errors.name ? (
+                    <span className="text-sm text-red-600" id="error">
+                      {errors.name.message as any}
+                    </span>
+                  ) : null}
                 </div>
 
                 <div className="relative z-0 w-full mb-5 ml-8">
                   <input
                     type="email"
-                    name="email"
                     placeholder=" "
-                    required
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                        message: "Invalid email address",
+                      },
+                    })}
                     className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
                   />
                   <label
-                    htmlFor="name"
+                    htmlFor="email"
                     className="absolute duration-300 top-3 -z-1 origin-0"
                   >
                     Enter email
                   </label>
-                  <span className="text-sm text-red-600 hidden" id="error">
-                    Email is required
-                  </span>
+                  {errors.email ? (
+                    <span className="text-sm text-red-600" id="error">
+                      {errors.email.message as any}
+                    </span>
+                  ) : null}
                 </div>
               </div>
 
               <div className="relative z-0 w-full mb-5">
                 <input
                   type="text"
-                  name="name"
                   placeholder=" "
-                  required
+                  {...register("subject", { required: "Subject is required" })}
                   className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
                 />
                 <label
-                  htmlFor="name"
+                  htmlFor="subject"
                   className="absolute duration-300 top-3 -z-1 origin-0"
                 >
                   Subject
                 </label>
-                <span className="text-sm text-red-600 hidden" id="error">
-                  Subject is required
-                </span>
+                {errors.subject ? (
+                  <span className="text-sm text-red-600" id="error">
+                    {errors.subject.message as any}
+                  </span>
+                ) : null}
               </div>
               <div className="relative z-0 w-full mb-5">
                 <textarea
-                  name="name"
-                  value="Write your message here "
-                  required
+                  value={message}
+                  {...register("message", { required: "Message is required" })}
                   rows={8}
+                  onChange={(e) => {
+                    setValue("message", e.target.value);
+                    setMessage(e.target.value);
+                  }}
                   className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
                 />
                 <label
-                  htmlFor="name"
+                  htmlFor="message"
                   className="absolute duration-300 top-3 -z-1 origin-0"
                 >
                   Message
                 </label>
-                <span className="text-sm text-red-600 hidden" id="error">
-                  Message is required
-                </span>
+                {errors.message ? (
+                  <span className="text-sm text-red-600" id="error">
+                    {errors.message.message as any}
+                  </span>
+                ) : null}
               </div>
 
               <button
                 id="button"
-                type="button"
+                type="submit"
                 className="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-gray-600 hover:bg-gray-400 hover:shadow-lg focus:outline-none"
               >
                 Send your message
