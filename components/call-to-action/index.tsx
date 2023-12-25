@@ -17,6 +17,7 @@ type Props = {};
 
 const CallToAction = (props: Props) => {
   const [isDisplay, setIsDisplay] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("Write your message here");
   const [response, setResponse] = useState({
     isError: false,
@@ -32,11 +33,16 @@ const CallToAction = (props: Props) => {
 
   const submitHandler = async (data: any) => {
     try {
-      let res = await axios.post("http://localhost:5000/request", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      setIsLoading((_prev) => true);
+      let res = await axios.post(
+        "https://portfolio-9qwy.onrender.com/request",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setResponse({
         isError: false,
         message:
@@ -46,7 +52,9 @@ const CallToAction = (props: Props) => {
       removeResponseMessage();
       reset();
       setMessage((_prev) => "Write your message here");
+      setIsLoading((_prev) => false);
     } catch (error) {
+      setIsLoading((_prev) => false);
       console.log(error);
       setIsDisplay((_prev) => true);
       setResponse({
@@ -184,11 +192,35 @@ const CallToAction = (props: Props) => {
               </div>
 
               <button
-                id="button"
                 type="submit"
-                className="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-gray-600 hover:bg-gray-400 hover:shadow-lg focus:outline-none"
+                disabled={isLoading}
+                className="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-gray-600 hover:bg-gray-400 hover:shadow-lg focus:outline-none flex items-center justify-center"
               >
-                Send your message
+                {isLoading == true ? (
+                  <svg
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="10"
+                      cy="10"
+                      r="8"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="2"
+                    >
+                      <animate
+                        attributeName="stroke-dasharray"
+                        values="1 40;90 40;90 40"
+                        keyTimes="0; 0.5; 1"
+                        dur="3s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                  </svg>
+                ) : null}
+                <span className="mx-2"> Send your message</span>
               </button>
             </form>
           </div>
