@@ -1,7 +1,7 @@
-import NavbarComponent from "@/components/ui/navbar.component";
 import type { Metadata } from "next";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title:
@@ -20,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <SpeedInsights/>
-        {children}</body>
+        <SpeedInsights />
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }
