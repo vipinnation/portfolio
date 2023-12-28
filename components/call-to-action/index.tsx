@@ -226,7 +226,7 @@ const CallToAction = (props: Props) => {
           </div>
         </div>
 
-        <div className="sm:w-9/12 mx-auto text-white">
+        <div className="sm:w-9/12 mx-auto text-white ">
           <div className="mx-auto  px-6 py-24 border-0 shadow-lg sm:rounded-3xl w-full">
             <div>
               <p className="flex items-center">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Vipin Meghwal- Web & Software Developer. Explore a creative portfolio showcasing HTML, CSS, JavaScript skills.",
   keywords:
-    "developer, portfolio, web development, software development, HTML, CSS, JavaScript",
+    "developer, portfolio, web development, software development, HTML, CSS, JavaScript,freelance ,freelancer, freelance developer",
 };
 
 export default function RootLayout({
