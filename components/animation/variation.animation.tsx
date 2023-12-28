@@ -38,7 +38,7 @@ const VariationAnimation: React.FC<Props> = ({ content }) => {
           animate="visible"
         >
           {content.map((index) => (
-            <div>
+            <div key={Math.floor(Math.random() * 1e4)}>
               <motion.div
                 key={index}
                 className="item mx-4  w-[5rem] sm:w-[10rem] h-full"

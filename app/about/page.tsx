@@ -1,3 +1,4 @@
+"use client";
 import InViewAnimation from "@/components/animation/in-view.animation";
 import TextSlideAnimation from "@/components/animation/text-slide.animation";
 import VariationAnimation from "@/components/animation/variation.animation";
