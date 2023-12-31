@@ -52,8 +52,8 @@ const MyProjects = () => {
 
         <div className="mt-16 grid sm:grid-cols-1 sm:w-9/12 mx-auto">
           {myProjects.map((item, i) => (
-            <InViewAnimation>
-              <TextSlideAnimation>
+            <InViewAnimation key={i}>
+              <TextSlideAnimation key={i}>
                 <ProjectCardComponent
                   key={i}
                   name={item.name}
