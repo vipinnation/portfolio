@@ -21,7 +21,7 @@ const AboutPage = (props: Props) => {
     { name: "Docker", rating: 9.7, icon: skills_images.docker },
   ];
   return (
-    <div className="bg-black min-h-[100vh] text-white p-4 ">
+    <div className=" min-h-[100vh] text-white p-4 ">
       <InViewAnimation>
         <TextSlideAnimation>
           <div className=" sm:w-9/12 mx-auto">

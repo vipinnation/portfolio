@@ -13,8 +13,26 @@
   scroll-behavior: smooth;
 }
 
+.bg-primary,
 body {
-  background: var(--primary-color);
+  background-color: #130213;
+  background-image: linear-gradient(
+    153deg,
+    #130213 0%,
+    #225259 24%,
+    #532626 49%,
+    #122646 75%,
+    #2e5b2e 100%
+  );
+}
+
+.glass {
+  background: rgba(163, 43, 43, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* width */

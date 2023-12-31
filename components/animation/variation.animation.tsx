@@ -32,7 +32,7 @@ const VariationAnimation: React.FC<Props> = ({ content }) => {
     <div>
       <InViewAnimation>
         <motion.div
-          className="container grid grid-cols-3 sm:grid-cols-6"
+          className="container grid grid-cols-2 sm:grid-cols-6"
           variants={container}
           initial="hidden"
           animate="visible"
@@ -41,7 +41,7 @@ const VariationAnimation: React.FC<Props> = ({ content }) => {
             <div key={Math.floor(Math.random() * 1e4)}>
               <motion.div
                 key={index}
-                className="item mx-4  w-[5rem] sm:w-[10rem] h-full"
+                className="item mx-4  w-[8rem] sm:w-[10rem] h-full"
                 variants={item}
               >
                 <SkillCardComponent

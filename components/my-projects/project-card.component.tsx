@@ -7,6 +7,8 @@ type Props = {
   link: string;
   image: any;
   key: string | number;
+  className?: string;
+  type: string;
 };
 
 const ProjectCardComponent: React.FC<Props> = ({
@@ -15,22 +17,27 @@ const ProjectCardComponent: React.FC<Props> = ({
   key,
   image,
   link,
+  className,
+  type,
 }) => {
   return (
-    <div key={key} className="py-8 sm:py-0">
-      <div className="relative flex sm:w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-        <div className="relative mx-4 -mt-6 h-56 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-          <Image src={image} alt={name} />
-        </div>
-        <div className="p-6">
-          <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+    <div className="my-4">
+      <div className="text-white mobile:w-[96%]">
+        <div className="project-background px-8 mx-auto  rounded-md grid grid-cols-2 mobile:grid-cols-1">
+          <div className="ml-0 sm:ml-12 sm:py-16 mobile:pt-4">
+            <span className="text-xs leading-none">{type}</span>
+            <h1 className="text-3xl pb-3 font-semibold">{name}</h1>
+            <p className="text-sm">{description}</p>
             <a href={link} target="_blank">
-              {name}
+              <button className="uppercase border-2 py-3 px-4 border-gray mt-12 text-yellow-400 font-normal text-sm hover:border-yellow-400 hover:text-white delay-100 mobile:mt-4 mobile:w-full ">
+                Visit Website
+              </button>
             </a>
-          </h5>
-          <p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-            {description}
-          </p>
+          </div>
+
+          <div className="flex items-center justify-center mobile:my-2">
+            <Image src={image} alt={name} height={400} width={400} />
+          </div>
         </div>
       </div>
     </div>
