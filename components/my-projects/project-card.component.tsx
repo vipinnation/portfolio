@@ -23,7 +23,7 @@ const ProjectCardComponent: React.FC<Props> = ({
   return (
     <div className="my-4">
       <div className="text-white mobile:w-[96%]">
-        <div className="project-background px-8 mx-auto  rounded-md grid grid-cols-2 mobile:grid-cols-1">
+        <div className="project-background px-3 sm:px-8 mx-auto  rounded-md grid grid-cols-2 mobile:grid-cols-1">
           <div className="ml-0 sm:ml-12 sm:py-16 mobile:pt-4">
             <span className="text-xs leading-none">{type}</span>
             <h1 className="text-3xl pb-3 font-semibold">{name}</h1>
@@ -35,7 +35,7 @@ const ProjectCardComponent: React.FC<Props> = ({
             </a>
           </div>
 
-          <div className="flex items-center justify-center mobile:my-2">
+          <div className="flex items-center justify-center mobile:my-4">
             <Image src={image} alt={name} height={400} width={400} />
           </div>
         </div>

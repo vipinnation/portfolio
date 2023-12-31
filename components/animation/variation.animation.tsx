@@ -41,7 +41,7 @@ const VariationAnimation: React.FC<Props> = ({ content }) => {
             <div key={Math.floor(Math.random() * 1e4)}>
               <motion.div
                 key={index}
-                className="item mx-4  w-[8rem] sm:w-[10rem] h-full"
+                className="item mx-4   sm:w-[10rem] h-full"
                 variants={item}
               >
                 <SkillCardComponent
