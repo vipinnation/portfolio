@@ -77,7 +77,7 @@ const CallToAction = (props: Props) => {
   };
 
   return (
-    <div className="mobile:h-[120vh] h[100vh] py-8">
+    <div className=" py-8">
       <div className="text-white text-center">
         <h4 className="text-5xl sm:text-6xl">Contact Us</h4>
         <span className="text-sm mx-5">
