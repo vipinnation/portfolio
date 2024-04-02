@@ -8,11 +8,6 @@
   --white: #ffffff;
 }
 
-* {
-  font-family: "Jura", sans-serif;
-  scroll-behavior: smooth;
-}
-
 .bg-primary,
 body {
   background-color: #130213;
@@ -27,12 +22,13 @@ body {
 }
 
 .glass {
-  background: rgba(163, 43, 43, 0.45);
+  background: rgba(60, 185, 176, 0.4);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(6.5px);
-  -webkit-backdrop-filter: blur(6.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  z-index: 50;
 }
 
 /* width */
@@ -755,3 +751,5 @@ select:focus ~ label {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+

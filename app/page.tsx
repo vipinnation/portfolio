@@ -18,6 +18,7 @@ import TextSlideAnimation from "@/components/animation/text-slide.animation";
 import RotateAnimation from "@/components/animation/rotate.animation";
 import PresenceAnimation from "@/components/animation/presence.animation";
 import useMenuAnimation from "@/components/animation/animate.animation";
+import { user_images } from "@/utils/images.utils";
 
 type IRedirectJSX = {
   link: string;
@@ -137,15 +138,16 @@ export default function Home() {
     <div>
       <TextSlideAnimation>
         <div>
-          <nav className={`${isNavOpen == true ? "fixed" : ""}`}>
-            <div className="container mx-auto flex justify-around items-center ">
-              <span className="text-2xl font-bold nav-logo py-4 md:py-0">
-                Vipin Meghwal
-              </span>
+          <nav className={`${isNavOpen == true ? "fixed" : ""} glass`}>
+            <div className="container mx-auto flex justify-between sm:justify-around items-center ">
+              <img
+                src={user_images.logoWithoutName.src}
+                className="w-24 h-16 mx-2"
+              />
 
               <button
                 id="toggle-menu-button"
-                className="z-50 md:hidden relative"
+                className="z-50 md:hidden relative mr-3"
                 onClick={(e) => {
                   setIsNavOpen((_prev) => true);
                 }}
@@ -270,6 +272,8 @@ export default function Home() {
             ) : null}
           </div>
         </div>
+
+        <div className="py-6"></div>
 
         <div
           className="flex items-center justify-center text-center h-[100vh] text-white"

@@ -11,6 +11,8 @@ import engima from "../assets/images/engima.png";
 import edureon from "../assets/images/edureon.png";
 import chatore from "../assets/images/chatore.png";
 import kustomparts from "../assets/images/kustomparts.png";
+import logo from "../assets/images/logo.jpg";
+import logoWithoutName from "../assets/images/logo_without_name.png";
 
 export const skills_images = {
   javascript: javascript,
@@ -29,4 +31,9 @@ export const project_images = {
   edureon,
   kustomparts,
   chatore,
+};
+
+export const user_images = {
+  logo,
+  logoWithoutName,
 };
